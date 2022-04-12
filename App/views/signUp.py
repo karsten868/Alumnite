@@ -1,6 +1,10 @@
 from flask import Blueprint, render_template, jsonify, request, send_from_directory
 from flask_login import LoginManager, current_user, login_user, login_required
-from forms import signUpForm
+from flask import Flask, request, render_template, redirect, flash, url_for
+from App.models import User
+from App.database import db
+from App.models import signupForm
+from App.models import loginForm
 
 
 ''' Begin Flask Login Functions '''
@@ -17,12 +21,12 @@ signUp_views = Blueprint('signUp_views', __name__, template_folder='../templates
 
 @signUp_views.route('/signup', methods=['GET'])
 def signUp_page():
-    form = SignUp() # create form object
+    form = signUp_page() # create form object
     return render_template('signUp.html', form=form) # pass form object to template
 
-@app.route('/signUp', methods=['POST'])
+@signUp_views.route('/signUp', methods=['POST'])
 def signup_submission():
-  form = SignUp() # create form object
+  form = signUp_page() # create form object
   if form.validate_on_submit():
     data = request.form # get data from form submission
     newuser = User(username=data['username'], email=data['email']) # create user object
