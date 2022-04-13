@@ -4,3 +4,4 @@ from .faculty import *
 from .event import *
 from .job import *
 from .jobBoard import *
+from .signUpForm import*

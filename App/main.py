@@ -16,12 +16,15 @@ from App.controllers import (
 
 from App.views import (
     user_views,
-    api_views
+    api_views,
+    signUp_views
+
 )
 
 views = [
     user_views,
-    api_views
+    api_views,
+    signUp_views
 ]
 
 def add_views(app, views):
@@ -41,15 +44,6 @@ def loadConfig(app, config):
         app.config['ENV'] = os.environ.get('ENV')
     for key, value in config.items():
         app.config[key] = config[key]
-
-
-''' Begin Flask Login Functions '''
-login_manager = LoginManager()
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(user_id)
-
-''' End Flask Login Functions '''
 
 def create_app(config={}):
     app = Flask(__name__, static_url_path='/static')

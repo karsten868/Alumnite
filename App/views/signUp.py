@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, jsonify, request, send_from_directory
 from flask_login import LoginManager, current_user, login_user, login_required
-from forms import signUpForm
+from App.models import SignUp, User
 
 
 ''' Begin Flask Login Functions '''
@@ -11,6 +11,10 @@ def load_user(user_id):
 
 ''' End Flask Login Functions '''
 
+from App.controllers import (
+    add_formData_to_db
+)
+
 
 signUp_views = Blueprint('signUp_views', __name__, template_folder='../templates')
 
@@ -20,15 +24,12 @@ def signUp_page():
     form = SignUp() # create form object
     return render_template('signUp.html', form=form) # pass form object to template
 
-@app.route('/signUp', methods=['POST'])
-def signup_submission():
+@signUp_views.route('/signup', methods=['POST'])
+def signUp_submission():
   form = SignUp() # create form object
   if form.validate_on_submit():
     data = request.form # get data from form submission
-    newuser = User(username=data['username'], email=data['email']) # create user object
-    newuser.set_password(data['password']) # set password
-    db.session.add(newuser) # save new user
-    db.session.commit()
+    add_formData_to_db(data)
     flash('Account Created!')# send message
     return redirect(url_for('index'))# redirect to login page
   flash('Error invalid input!')
