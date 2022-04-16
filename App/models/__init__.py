@@ -5,3 +5,4 @@ from .event import *
 from .job import *
 from .jobBoard import *
 from .signUpForm import*
+from .logInForm import*

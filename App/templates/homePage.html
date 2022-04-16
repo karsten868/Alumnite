@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}Flask MVC App{% endblock %}
+{% block page %}Alumni App {% endblock %}
+
+{{ super() }}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+<h3> Hi {{ current_user.username }}! Welcome to the Main Page! </h3>
+{% endif %}
+
+{% endblock %}

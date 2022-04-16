@@ -17,15 +17,21 @@ from App.controllers import (
 from App.views import (
     user_views,
     api_views,
-    signUp_views
+    signUp_views,
+    logIn_views,
+    homePage_views
 
 )
 
 views = [
     user_views,
     api_views,
-    signUp_views
+    signUp_views,
+    logIn_views,
+    homePage_views
 ]
+
+
 
 def add_views(app, views):
     for view in views:
@@ -59,6 +65,7 @@ def create_app(config={}):
     create_db(app)
     setup_jwt(app)
     app.app_context().push()
+   
     return app
 
 app = create_app()

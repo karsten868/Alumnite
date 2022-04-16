@@ -20,6 +20,16 @@
               {{ form.email.label }}
             </div>
 
+            <div class="input-field col s12 m8 offset-m2"> 
+              {{ form.firstname(size=50, class="validate") }}
+              {{ form.firstname.label }}
+            </div>
+
+            <div class="input-field col s12 m8 offset-m2"> 
+              {{ form.lastname(size=50, class="validate") }}
+              {{ form.lastname.label }}
+            </div>
+
             <div class="input-field col s12 m8 offset-m2">
               {{ form.password(size=20, class="validate") }}
               {{ form.password.label }}

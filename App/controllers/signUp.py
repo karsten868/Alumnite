@@ -3,8 +3,10 @@ from App.database import db
 
 
 def add_formData_to_db(data):
-    newuser = User(username=data['username'], email=data['email'], firstname=['firstname'], lastname=['lastname'] ) # create user object
-    newuser.set_password(data['password']) # set password
+    word = "help me"
+
+    newuser = User(username=data['username'], email=data['email'], firstname=data['firstname'], lastname=data['lastname'], password=data['password'])# create user object
     db.session.add(newuser) # save new user
+    print(data)
     db.session.commit()
     return User.query.all()
