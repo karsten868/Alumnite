@@ -9,9 +9,9 @@ class User(db.Model, UserMixin):
     lastname = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False)
     password = db.Column(db.String(120), nullable=False)
-    #photoId = db.Column(db.String(120), nullable=False)
-    # departmentId = db.Column('departmentId', db.Integer, db.ForeignKey('department.departmentId'), nullable=True)
-    # facultyId = db.Column('facultyId', db.Integer, db.ForeignKey('faculty.facultyId'), nullable=True)
+    photoId = db.Column(db.String(120), nullable=False)
+    departmentId = db.Column('departmentId', db.Integer, db.ForeignKey('department.departmentId'), nullable=True)
+    facultyId = db.Column('facultyId', db.Integer, db.ForeignKey('faculty.facultyId'), nullable=True)
 
     def __init__(self, username, firstname, lastname, email, password):
         self.username = username
@@ -28,7 +28,10 @@ class User(db.Model, UserMixin):
             'firstname': self.firstname,
             'lastname': self.lastname,
             'email': self.email,
-            'password':self.password
+            'password':self.password,
+            'photoId': self.photoId,
+            'departmentId': self.departmentId
+            # 'facultyId': self.facultyId
 
         }
 

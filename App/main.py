@@ -16,7 +16,7 @@ from App.controllers import (
 
 from App.views import (
     user_views,
-    api_views,
+    #api_views,
     signUp_views,
     logIn_views,
     homePage_views
@@ -25,12 +25,20 @@ from App.views import (
 
 views = [
     user_views,
-    api_views,
+    #api_views,
     signUp_views,
     logIn_views,
     homePage_views
 ]
 
+
+''' Begin Flask Login Functions '''
+login_manager = LoginManager()
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
+
+''' End Flask Login Functions '''
 
 
 def add_views(app, views):
@@ -65,8 +73,10 @@ def create_app(config={}):
     create_db(app)
     setup_jwt(app)
     app.app_context().push()
-   
+    login_manager.init_app(app)
+  
     return app
+    
 
 app = create_app()
 
