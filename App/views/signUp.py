@@ -30,7 +30,7 @@ def signUp_submission():
   if form.validate_on_submit():
     data = request.form# get data from form submission
     newuser=add_formData_to_db(data)
-    flash('Account Created!')# send message
-    return redirect(url_for('logIn.html')) # redirect to login page
-  flash('Error invalid input!')
-  return redirect(url_for('signUp'))
+    #flash('Account Created!')# send message
+    return redirect('/login') # redirect to login page
+  #flash('Error invalid input!')
+  return redirect('/signup')
