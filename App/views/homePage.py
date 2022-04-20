@@ -9,7 +9,7 @@ homePage_views = Blueprint('homePage_views', __name__, template_folder='../templ
 
 
 @homePage_views.route('/homePage', methods=['GET'])
-@login_required
+
 def home_page():
     return render_template('homePage.html') # pass form object to template
 

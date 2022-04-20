@@ -9,6 +9,7 @@ from datetime import timedelta
 
 
 from App.database import create_db, get_migrate
+from App.models import User
 
 from App.controllers import (
     setup_jwt
@@ -32,13 +33,13 @@ views = [
 ]
 
 
-''' Begin Flask Login Functions '''
-login_manager = LoginManager()
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(user_id)
+# ''' Begin Flask Login Functions '''
+# login_manager = LoginManager()
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return User.query.get(user_id)
 
-''' End Flask Login Functions '''
+# ''' End Flask Login Functions '''
 
 
 def add_views(app, views):
@@ -73,7 +74,7 @@ def create_app(config={}):
     create_db(app)
     setup_jwt(app)
     app.app_context().push()
-    login_manager.init_app(app)
+    #login_manager.init_app(app)
   
     return app
     
