@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, TextAreaField, SubmitField
 from wtforms.validators import InputRequired, EqualTo, Email
+# , render_kw={'class': 'btn waves-effect waves-light white-text'}
 
 class SignUp(FlaskForm):
     username = StringField('username', validators=[InputRequired()])
@@ -9,5 +10,5 @@ class SignUp(FlaskForm):
     lastname= StringField('lastname', validators=[InputRequired()])
     password = PasswordField('New Password', validators=[InputRequired(), EqualTo('confirm', message='Passwords must match')])
     confirm  = PasswordField('confirm Password')
-    submit = SubmitField('Sign Up', render_kw={'class': 'btn waves-effect waves-light white-text'})
+    submit = SubmitField('Sign Up')
 

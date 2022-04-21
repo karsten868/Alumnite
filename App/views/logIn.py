@@ -21,14 +21,14 @@ def index():
 
 @logIn_views.route('/login', methods=['POST'])
 def logIn_submission():
-  return redirect('http://localhost:8080/homePage')
-  # form = LogIn()
-  # if form.validate_on_submit(): # respond to form submission
-  #     data = request.form
-  #     user = User.query.filter_by(username = data['username']).first()
-  #     if user and user.check_password(data['password']): # check credentials
-  #       #flash('Logged in successfully.') # send message to next page
-  #       login_user(user) # login the user
-  #       return redirect("/users") # redirect to main page if login successful
-  # #flash('Invalid credentials')
-  # return redirect('/users')
+  #return redirect('http://localhost:8080/homePage')
+  form = LogIn()
+  if form.validate_on_submit(): # respond to form submission
+      data = request.form
+      user = User.query.filter_by(username = data['username']).first()
+      if user and user.check_password(data['password']): # check credentials
+        #flash('Logged in successfully.') # send message to next page
+        login_user(user) # login the user
+        return redirect('/users') # redirect to main page if login successful
+  #flash('Invalid credentials')
+  return redirect('/users')
