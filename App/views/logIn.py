@@ -29,6 +29,6 @@ def logIn_submission():
       if user and user.check_password(data['password']): # check credentials
         #flash('Logged in successfully.') # send message to next page
         login_user(user) # login the user
-        return redirect('/users') # redirect to main page if login successful
+        return redirect('/homePage') # redirect to main page if login successful
   #flash('Invalid credentials')
-  return redirect('/users')
+  return redirect('/login')
