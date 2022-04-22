@@ -14,10 +14,10 @@ def index():
   form= LogIn()
   return render_template('logIn.html', form=form)
 
-# @logIn_views.route('/login', methods=['GET'])
-# def logIn_page():
-#   form = LogIn()
-#   return render_template('logIn.html', form=form)
+@logIn_views.route('/login', methods=['GET'])
+def logIn_page():
+  form = LogIn()
+  return render_template('logIn.html', form=form)
 
 @logIn_views.route('/login', methods=['POST'])
 def logIn_submission():
@@ -27,8 +27,8 @@ def logIn_submission():
       data = request.form
       user = User.query.filter_by(username = data['username']).first()
       if user and user.check_password(data['password']): # check credentials
-        #flash('Logged in successfully.') # send message to next page
+        flash('Logged in successfully.') # send message to next page
         login_user(user) # login the user
         return redirect('/homePage') # redirect to main page if login successful
-  #flash('Invalid credentials')
+  flash('Invalid credentials')
   return redirect('/login')
