@@ -1,12 +1,30 @@
 {% extends "layout.html" %}
-{% block title %}Flask MVC App{% endblock %}
-{% block page %}Alumni App {% endblock %}
+{% block title %}Alumnite Main Page{% endblock %}
+{% block page %}Alumninte{% endblock %}
 
 {{ super() }}
 
 {% block content %}
 {% if current_user.is_authenticated %}
-<h3> Hi {{ current_user.username }}! Welcome to the Main Page! </h3>
+<!--<h4> Hi {{ current_user.username }}! Welcome to the Main Page! </h4>-->
+<div class="home">
+    
+    <div class="on">
+        <p>Updates on the Job Board?</p>
+        <form action="/jobBoard" method="GET">
+           <button class="waves-effect waves-light btn">Job Board</button>
+            <!-- <a class="waves-effect waves-light btn">Job Board</a> -->
+        </form>
+    </div>
+    <div class="on1">
+        <p>Check out the Latest Events</p>
+        <form action="/event" method="GET">
+           <button class="waves-effect waves-light btn">Events</button>
+            <!--  <a class="btn">Events</a> -->
+        </form>
+    </div>
+</div>
+
 {% endif %}
 
 {% endblock %}

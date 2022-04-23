@@ -20,7 +20,10 @@ from App.views import (
     #api_views,
     signUp_views,
     logIn_views,
-    homePage_views
+    homePage_views,
+    jobBoard_views,
+    event_views
+    
 
 )
 
@@ -29,7 +32,10 @@ views = [
     #api_views,
     signUp_views,
     logIn_views,
-    homePage_views
+    homePage_views,
+    jobBoard_views,
+    event_views
+    
 ]
 
 
