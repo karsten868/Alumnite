@@ -6,101 +6,56 @@
 
 {% block content %}
 {% if current_user.is_authenticated %}
+
+<div class="header">
+    <img src="logo3.png" width="100px">
+</div>
 <div class="sideNav">
-    <a href="/homePage">Home</a>
     <a class="active" href="/jobBoard">Job Board</a>
     <a href="/event">Events</a>
-    <a href="#">Profile</a>
+    <a href="/profile">Profile</a>
 </div>
 <div class="portal">
     <div class="board">
-        <div class="job">
-            <p>Job: Graphic Designer</p>
-            <p>Company: Technic Inc</p>
-            <p>Salary: $2000TTD/2weeks</p>
-            <p>Application Deadline: 18th July 2022</p>
-            <p>Website: www.technicinc.com</p>
+        <div id="jobs">
+            <!--<div class="job">
+                    <p>Job Title: </p>
+                    <p>Job Type: </p>
+                    <p>Category: </p>
+                    <p>Company: </p>
+                    <p>Salary: </p>
+                    <p>Location: </p>
+                    <p>Website: </p>   
+                </div>
+                <br>-->        
         </div>
-        <br>
-        <div class="job">
-            <p>Job: Software Engineer</p>
-            <p>Company: Technic Inc</p>
-            <p>Salary: $2000TTD/2weeks</p>
-            <p>Application Deadline: 30th May 2022</p>
-            <p>Website: www.technicinc.com</p>
-        </div>
-        <br>
-        <div class="job">
-            <p>Job: Graphic Designer</p>
-            <p>Company: Techno Inc</p>
-            <p>Salary: $2500TTD/2weeks</p>
-            <p>Application Deadline: 8th June 2022</p>
-            <p>Website: www.technoinc.com</p>
-        </div>
-        <br>
-        <div class="job">
-            <p>Job: Teacher</p>
-            <p>Company: School</p>
-            <p>Salary: $5500TTD/month</p>
-            <p>Application Deadline: 15th September 2022</p>
-            <p>Website: www.school.edu</p>
-        </div>
-        <br>
-        <div class="job">
-            <p>Job: Assistant Designer</p>
-            <p>Company: Techno Inc</p>
-            <p>Salary: $4500TTD/month</p>
-            <p>Application Deadline: 17th October 2022</p>
-            <p>Website: www.technoinc.com</p>
-        </div>
-        <br>
-        <div class="job">
-            <p>Job: Graphic Designer</p>
-            <p>Company: Technic Inc</p>
-            <p>Salary: $6000TTD/month</p>
-            <p>Application Deadline: 22nd April 2022</p>
-            <p>Website: www.technicinc.com</p>
-        </div>
-        <br>
-        <div class="job">
-            <p>Job: Janitor</p>
-            <p>Company: Technic Inc</p>
-            <p>Salary: $2200TTD/2weeks</p>
-            <p>Application Deadline: 19th June 2022</p>
-            <p>Website: www.technicinc.com</p>
-        </div>
-        <br>
-        <div class="job">
-            <p>Job: Interior Designer</p>
-            <p>Company: Studio Live</p>
-            <p>Salary: $5600TTD/month</p>
-            <p>Application Deadline: 20th May 2022</p>
-            <p>Website: www.liveStudio.org</p>
-        </div>
-        <br>
-        <div class="job">
-            <p>Job: Photographer</p>
-            <p>Company: Studio Live</p>
-            <p>Salary: $250TTD/hour</p>
-            <p>Application Deadline: 20th May 2022</p>
-            <p>Website: www.liveStudio.org</p>
-        </div>
-        <br>
-        <div class="job">
-            <p>Job: Cricket Coach</p>
-            <p>Company: School</p>
-            <p>Salary: $5000TTD/month</p>
-            <p>Application Deadline: 15th August 2022</p>
-            <p>Website: www.school.edu</p>
-        </div>
-        <br>
-        <div class="job">
-            <p>Job: Computer Technician</p>
-            <p>Company: Techno Inc</p>
-            <p>Salary: $2500TTD/2weeks</p>
-            <p>Application Deadline: 6th May 2022</p>
-            <p>Website: www.technoinc.com</p>
-        </div>
+        <script>
+            const api_url = 'https://remotive.com/api/remote-jobs?limit=120';
+            async function getData(){
+                const response = await fetch(api_url);  
+                const data = await response.json();
+
+                let i = 0;
+                let data1="";
+                while(i<120){
+                    data1+=`<div class="job">
+                                <p>Job Title: ${data.jobs[i].title}</p>
+                                <p>Job Type: ${data.jobs[i].job_type}</p>
+                                <p>Category: ${data.jobs[i].category}</p>
+                                <p>Company: ${data.jobs[i].company_name}</p>
+                                <p>Salary: ${data.jobs[i].salary}</p>
+                                <p>Location: ${data.jobs[i].candidate_required_location}</p>
+                                <p>Website: ${data.jobs[i].url}</p>   
+                            </div>
+                            <br>`;
+                    document.getElementById("jobs").innerHTML=data1;
+                    i++;
+                }
+            }
+            getData();              
+        </script>
+    </div>
+</div>
 
 {% endif %}
 

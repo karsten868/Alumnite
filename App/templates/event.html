@@ -6,13 +6,14 @@
 
 {% block content %}
 {% if current_user.is_authenticated %}
-<div class="sideNav">
-    <a href="/homePage">Home</a>
-    <a class="active" href="/jobBoard">Job Board</a>
-    <a href="/event>Events</a>
-    <a href="#">Profile</a>
+<div class="header">
+    <img src="logo3.png" width="100px">
 </div>
-
+<div class="sideNav">
+    <a href="/jobBoard">Job Board</a>
+    <a class="active" href="/event">Events</a>
+    <a href="/profile">Profile</a>
+</div>
 <div class="events">
     <div class="eventslides">
         <img src="https://pbs.twimg.com/media/ES1WPgGXQAE7vYX?format=jpg&name=4096x4096" style="width: 100%;">
@@ -47,37 +48,39 @@
     </div>
 </div>
 
+</header>
+
 <script>
-    let slide = 1;
-    showEvents(slide);
+let slide = 1;
+showEvents(slide);
 
-    function plusEvents(n){
-        showEvents(slide += n);
-    }
+function plusEvents(n){
+    showEvents(slide += n);
+}
 
-    function currentEvent(n){
-        showEvents(slide = n);
-    }
+function currentEvent(n){
+    showEvents(slide = n);
+}
 
-    function showEvents(n){
-        let i;
-        let slides = document.getElementsByClassName("eventslides");
-        let dots = document.getElementsByClassName("dot");
-        if (n > slides.length){
-            slide = 1;
-        }
-        if (n < 1){
-            slide = slides.length;
-        }
-        for (i = 0; i < slides.length; i++){
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++){
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slide-1].style.display = "block";
-        dots[slide-1].className += " active";
+function showEvents(n){
+    let i;
+    let slides = document.getElementsByClassName("eventslides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length){
+        slide = 1;
     }
+    if (n < 1){
+        slide = slides.length;
+    }
+    for (i = 0; i < slides.length; i++){
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++){
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slide-1].style.display = "block";
+    dots[slide-1].className += " active";
+}
 
 </script>
 

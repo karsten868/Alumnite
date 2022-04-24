@@ -22,7 +22,8 @@ from App.views import (
     logIn_views,
     homePage_views,
     jobBoard_views,
-    event_views
+    event_views,
+    profile_views
     
 
 )
@@ -34,7 +35,8 @@ views = [
     logIn_views,
     homePage_views,
     jobBoard_views,
-    event_views
+    event_views,
+    profile_views
     
 ]
 

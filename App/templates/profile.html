@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block title %}Alumnite Main Page{% endblock %}
+{% block page %}Alumninte{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Alumnite</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--<link href="profile.css" rel="stylesheet" type="text/css" />-->
+    </head>
+    <body>
+        <header>
+            <div class="header">
+                <a href="/homePage"><img src="logo2.png" width="100px"></a>
+                <input class="sec" type="text" placeholder="Search">
+               
+            </div>
+        </header>
+            <div class="sideNav">
+                <a href="/jobBoard">Job Board</a>
+                <a href="/event">Events</a>
+                <a class="active" href="/profile">Profile</a>
+            </div>
+
+            <div class="account">
+
+                <div class="bg">
+
+                    <img src="architecture.jpg" style="width:100%;height:140px;">
+
+                </div>
+               
+
+                <div class="name">
+
+                    <h1>Roberto Sanchez</h1>
+                    <br>
+                    <h3>Bobbert</h3>
+
+                </div>
+
+                <div class="about">
+
+                    <p>Bob</p>
+                    <br>
+                    <p>Department: Computing and Information Technology</p>
+                    <br>
+                    <p>Faculty: Science Technology</p>
+                    <br>
+                    <p>Graduated: 2022</p>
+
+                </div>
+
+                <div class="sm">
+                    <h3>Social Media</h3>
+                    <br>
+                    <a><img src="facebooklogo.png" style="width:30px;height:30px;"></a>
+                    <a><img src="instagramlogo1.png" style="width:30px;height:30px;"></a>
+                    <a><img src="twitterlogo.png" style="width:30px;height:30px;"></a>
+                    <a><img src="linkedInlogo.png" style="width:30px;height:30px;"></a>
+
+                </div>
+
+            
+
+            </div>
+        
+    </body>
+</html>
+
+{% endif %}
+
+{% endblock %}

@@ -7,23 +7,43 @@
 {% block content %}
 {% if current_user.is_authenticated %}
 <!--<h4> Hi {{ current_user.username }}! Welcome to the Main Page! </h4>-->
+
+<div class="header">
+    <img src="logo3.png" width="100px">
+</div>
 <div class="home">
-    
-    <div class="on">
-        <p>Updates on the Job Board?</p>
-        <form action="/jobBoard" method="GET">
-           <button class="waves-effect waves-light btn">Job Board</button>
-            <!-- <a class="waves-effect waves-light btn">Job Board</a> -->
-        </form>
-    </div>
-    <div class="on1">
-        <p>Check out the Latest Events</p>
-        <form action="/event" method="GET">
-           <button class="waves-effect waves-light btn">Events</button>
-            <!--  <a class="btn">Events</a> -->
-        </form>
+
+    <!--<h4> Hi {{ current_user.username }}! Welcome to the Main Page! </h4>-->
+
+    <div class="land">
+        <div class="dashboard">
+            <div class="dash">
+                <img src="https://d2v9ipibika81v.cloudfront.net/uploads/sites/256/job4_f.jpg" width="100%">
+                <h1>Job Board</h1>
+                <p>On the Job Hunt</p>
+                <p>Visit the Job Board</p>
+                <a href="/jobBoard"><button>Job Board</button></a>
+            </div>
+            <br>
+            <div class="dash">
+                <img src="https://finance.tha.gov.tt/wp-content/uploads/1970/01/events.jpg" width="100%">
+                <h1>Events</h1>
+                <p>Looking forward to spend time with friends</p>
+                <p>See upcoming Events</p>
+                <a href="/event"><button>Events</button></a>
+            </div>
+            <br>
+            <div class="dash">
+                <img src="https://png.pngitem.com/pimgs/s/78-781373_icon-profile-02-clip-arts-gambar-profil-kosong.png" width="100%">
+                <h1>Profile</h1>
+                <p>Need to edit your page?</p>
+                <p>View your Profile Account</p>
+                <a href="/profile"><button>Profile</button></a>
+            </div>
+        </div>
     </div>
 </div>
+
 
 {% endif %}
 
